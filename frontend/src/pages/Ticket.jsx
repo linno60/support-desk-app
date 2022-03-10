@@ -5,11 +5,7 @@ import { FaPlus } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getTicket, closeTicket } from '../features/tickets/ticketSlice'
-import {
-    getNotes,
-    createNote,
-    reset as notesReset,
-} from '../features/notes/noteSlice'
+import { getNotes, createNote } from '../features/notes/noteSlice'
 import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 import NoteItem from '../components/NoteItem'
@@ -32,7 +28,7 @@ Modal.setAppElement('#root')
 function Ticket() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [noteText, setNoteText] = useState('')
-    const { ticket, isLoading, isSuccess, isError, message } = useSelector(
+    const { ticket, isLoading, isError, message } = useSelector(
         (state) => state.tickets
     )
 
@@ -40,7 +36,6 @@ function Ticket() {
         (state) => state.notes
     )
 
-    const params = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { ticketId } = useParams()
