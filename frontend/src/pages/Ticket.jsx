@@ -53,7 +53,7 @@ function Ticket() {
     // Close ticket
     const onTicketClose = () => {
         dispatch(closeTicket(ticketId))
-        toast.success('Ticket Closes')
+        toast.success('Ticket Closed')
         navigate('/tickets')
     }
 
@@ -99,7 +99,7 @@ function Ticket() {
                 <h2>Notes</h2>
             </header>
 
-            {ticket.status !== 'closes' && (
+            {ticket.status !== 'closed' && (
                 <button onClick={openModal} className='btn'>
                     <FaPlus /> Add Note
                 </button>
